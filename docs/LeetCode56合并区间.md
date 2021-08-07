@@ -1,13 +1,13 @@
 
 ```class Solution {
     public int[][] merge(int[][] intervals) {
-        if (intervals <= 1){
+        if (intervals == null || intervals.length == 0){
             return intervals;
         }
         // 合并后我们也不知道到底有多少个数组，所以用ArrayList这个可变的
         List<int[]> res = new ArraysList<>();
         // 给二维数组内的数组排序，因为一开始并不是排好序的，我们只能从小到大看，我们没法操作，无法比较
-        // 因为是二维数组，所以要用Array.sort()
+        // 因为是二维数组，所以要用Arrays.sort()
         // a,b 代表其中两个元素,a(0) - b(0)表示用a的数组第一个，减去b数组第一个，以这个为标准进行排序
         // a(0) - b(0)就是代表从小到大，如果是b(0) - a(0)就是从大到小
         Arrays.sort(intervals, (a, b) -> (a(0) - b(0)) );//排序完成复杂度就是nlog(n),（）内的n就是intervals的长度
