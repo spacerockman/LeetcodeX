@@ -5,7 +5,7 @@
             return intervals;
         }
         // 合并后我们也不知道到底有多少个数组，所以用ArrayList这个可变的
-        List<int[]> res = new ArrayList<>();
+        List<int[]> res = new ArraysList<>();
         // 给二维数组内的数组排序，因为一开始并不是排好序的，我们只能从小到大看，我们没法操作，无法比较
         // 因为是二维数组，所以要用Array.sort()
         // a,b 代表其中两个元素,a(0) - b(0)表示用a的数组第一个，减去b数组第一个，以这个为标准进行排序
@@ -30,5 +30,31 @@
         // return res.toArray(new int[res.size()][2]);
         
             }
+}
+```
+完整代码
+```
+class Solution {
+    public int[][] merge(int[][] intervals) {
+        if (intervals == null || intervals.length == 0){
+            return intervals;
+        }
+        // 从小到大排序
+        Arrays.sort(intervals, (a, b) -> (a[0] - b[0]));
+        //初始化可变结果list
+        List<int[]> res = new ArrayList<>();
+        //创建curr，准备两两比较
+        int[] curr = intervals[0];
+        for(int i = 1; i < intervals.length; i++){
+            if(curr[1] < intervals[i][0]){
+                res.add(curr);
+                curr = intervals[i];
+            }else{
+                curr[1] = Math.max(curr[1], intervals[i][1]);
+            }
+        }
+        res.add(curr);
+        return res.toArray(new int[res.size()][2]);
+    }
 }
 ```
