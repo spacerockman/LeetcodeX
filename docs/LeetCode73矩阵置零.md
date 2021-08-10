@@ -75,7 +75,7 @@ class Solution {
     }
     for()
 
-3. for遍历除去第一行和第一列的元素 （i，j=1），如果存在matrix[i][j] == 0，就把对应的行和列都变成0；
+3. for遍历除第一行和第一列以外的元素 （i，j=1），如果存在matrix[i][j] == 0，就把对应的行和列都变成0；
     for(){
         if(matrix[i][j] == 0){
             matrix[0][j] = 0;
